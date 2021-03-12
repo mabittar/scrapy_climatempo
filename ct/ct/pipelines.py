@@ -15,11 +15,6 @@ class CtPipeline:
         db = self.conn['clima']
         self.collection = db['clima_tb']
 
-    def create_connection(self):
-        self.conn = sqlite3.connect("clima.db")
-        self.cursor = self.conn.cursor()
-
     def process_item(self, item, spider):
         self.collection.insert(dict(item))
-        self.store_db(item)
         return item

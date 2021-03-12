@@ -20,10 +20,8 @@ class ClimaTempo(scrapy.Spider):
     def parse_text(self, response):
         item = CtItem()
 
-        city = str(
-            response.xpath(
-                '//*[@id="mainContent"]/ul/div/div[1]/ol/li[4]/span/text()').
-            get()),
+        city = str(''.join(response.xpath(
+            '//*[@id="mainContent"]/ul/div/div[1]/ol/li[4]/span/text()').get().split()))
 
         weather_now_C = float(''.join(
             re.findall(
