@@ -1,6 +1,7 @@
 import scrapy
 from datetime import datetime
 import re
+from ..items import CtItem
 
 
 class ClimaTempo(scrapy.Spider):
@@ -17,8 +18,12 @@ class ClimaTempo(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse_text)
 
     def parse_text(self, response):
+        item = CtItem()
+
         city = str(
-            response.xpath('//*[@id="mainContent"]/ul/div/div[1]/ol/li[4]/span/text()').get()),
+            response.xpath(
+                '//*[@id="mainContent"]/ul/div/div[1]/ol/li[4]/span/text()').
+            get()),
 
         weather_now_C = float(''.join(
             re.findall(
@@ -54,15 +59,13 @@ class ClimaTempo(scrapy.Spider):
                     response.xpath(
                         '//*[@id="mainContent"]/div[7]/div[4]/div[1]/div[2]/div[1]/div/div[4]/ul/li[3]/div[2]/span/text()'
                     ).get().split()))))
-        # url = ''
-        # time = ''
-        yield {
-            'city': city,
-            'weather_now_C': weather_now_C,
-            'felling': felling,
-            'wind': wind,
-            'humidity': humidity,
-            'pressure': pressure,
-            'url': response.url,
-            'time': datetime.now().isoformat(timespec='minutes')
-        }
+
+        item['city'] = city
+        item['weather_now_C'] = weather_now_C
+        item['felling'] = felling
+        item['wind'] = wind
+        item['humidity'] = humidity
+        item['url'] = response.url
+        item['register_at'] = datetime.now().isoformat(timespec='minutes')
+
+        yield item

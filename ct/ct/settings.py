@@ -12,8 +12,7 @@ BOT_NAME = 'ct'
 SPIDER_MODULES = ['ct.spiders']
 NEWSPIDER_MODULE = 'ct.spiders'
 
-EED_EXPORT_ENCODING='utf-8'
-
+EED_EXPORT_ENCODING = 'utf-8'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'ct (+http://www.yourdomain.com)'
@@ -27,7 +26,7 @@ CONCURRENT_REQUESTS = 32
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+# DOWNLOAD_DELAY = 3600
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -64,9 +63,9 @@ CONCURRENT_REQUESTS = 32
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'ct.pipelines.CtPipeline': 300,
-# }
+ITEM_PIPELINES = {
+   'ct.pipelines.CtPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
