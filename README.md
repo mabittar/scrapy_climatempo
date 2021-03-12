@@ -43,5 +43,4 @@ Objetivo: obter a temperatura atual utilizando o scrapy, armazená-la em BD e au
   3. utilize o comando `shub deploy numero_do_projeto` para fazer o deploy, consulte o numero do seu projeto no dashboard em https://www.zyte.com
   4. a partir do dashboard garanta que os serviço está agendado conforme desejado. PS: já há uma configuração para rodar o serviço a cada hora, mas essa configuração precisa ser ajustada manualmente no Zyte (aba schedule)
 
-
-![]()
+![](screen_shot_DB. JPG)
